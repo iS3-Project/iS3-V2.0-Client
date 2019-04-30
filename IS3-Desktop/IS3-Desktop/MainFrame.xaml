@@ -1,0 +1,141 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
+    xmlns:IS3Desktop="clr-namespace:iS3.Desktop"
+    xmlns:IS3Controls="clr-namespace:iS3.Desktop.UserControls"
+    xmlns:IS3Python="clr-namespace:iS3.Python;assembly=iS3.Python"
+    x:Class="iS3.Desktop.MainFrame"
+    mc:Ignorable="d" 
+    d:DesignHeight="300" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="HomeImage" TargetType="{x:Type Image}" >
+            <Setter Property="Source" 
+                    Value="/iS3.Desktop;component/Images/Home-48.png" />
+        </Style>
+        <Style x:Key="PythonImage" TargetType="{x:Type Image}" >
+            <Setter Property="Source" 
+                    Value="/iS3.Desktop;component/Images/Python-48.png" />
+        </Style>
+        <Style x:Key="MonitoringImage" TargetType="{x:Type Image}" >
+            <Setter Property="Source" 
+                        Value="/iS3.Desktop;component/Images/Monitoring-48.png" />
+        </Style>
+        <Style x:Key="ProjectMapLayersImage" TargetType="{x:Type Image}" >
+            <Setter Property="Source" 
+                    Value="/iS3.Desktop;component/Images/ProjectMapLayer.png" />
+        </Style>
+        <Style x:Key="SelectionImage" TargetType="{x:Type Image}" >
+            <Setter Property="Source" 
+                    Value="/iS3.Desktop;component/Images/selection.png" />
+        </Style>
+        <Style x:Key="ObjectsImage" TargetType="{x:Type Image}">
+            <Setter Property="Source"
+                    Value="/iS3.Desktop;component/Images/Objects.png" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="RootVisual">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <!--<RowDefinition Height="24" />-->
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Project Base Layers Window-->
+
+        <!-- Menu bar -->
+        <Grid x:Name="TopMenuGrid" Grid.Row="0"
+              Background="{StaticResource BaseColor}">
+            <IS3Desktop:RibbonMenu x:Name="ribbonMenuPanel"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <xcad:DockingManager x:Name="DocMan"
+			AllowMixedOrientation="True"
+			BorderBrush="Black"
+			BorderThickness="0">
+                <xcad:DockingManager.DocumentHeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding IconSource}" Margin="0,0,4,0"/>
+                            <TextBlock Text="{Binding Title}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </xcad:DockingManager.DocumentHeaderTemplate>
+                <xcad:LayoutRoot x:Name="_layoutRoot">
+                    <xcad:LayoutPanel Orientation="Vertical">
+
+                        <xcad:LayoutAnchorablePaneGroup x:Name="Top"/>
+                        <xcad:LayoutPanel Orientation="Horizontal">
+                            <xcad:LayoutAnchorablePaneGroup Orientation="Vertical"
+                                                        DockWidth="300">
+                                <xcad:LayoutAnchorablePane x:Name="Left"
+                                                       DockWidth="300"
+                                                       FloatingWidth="300">
+                                    <!-- Project panels will be added here -->
+                                </xcad:LayoutAnchorablePane>
+                            </xcad:LayoutAnchorablePaneGroup>
+                            <xcad:LayoutDocumentPaneGroup Orientation="Vertical">
+                                <xcad:LayoutDocumentPane x:Name="Center">
+                                    <!-- Views will be added here -->
+                                </xcad:LayoutDocumentPane>
+                                <xcad:LayoutDocumentPane x:Name="Bottom" DockHeight="200">
+                                    <xcad:LayoutAnchorable Title="Python"
+                                                       ContentId="Python"
+                                                       CanClose="False">
+                                        <IS3Python:IronPythonControl x:Name="ipcHost"/>
+                                    </xcad:LayoutAnchorable>
+                                    <xcad:LayoutAnchorable Title="Data List"
+                                                       ContentId="DataList"
+                                                       CanClose="False">
+                                        <IS3Desktop:IS3DataGrid x:Name="MyDataGrid"/>
+                                    </xcad:LayoutAnchorable>
+                                </xcad:LayoutDocumentPane>
+                            </xcad:LayoutDocumentPaneGroup>
+                            <xcad:LayoutAnchorablePaneGroup Orientation="Vertical"
+                                                        DockWidth="300">
+                                <xcad:LayoutAnchorablePane x:Name="DomainTreeHolder"
+                                                       DockWidth="300"
+                                                       FloatingWidth="300"/>
+                                <xcad:LayoutAnchorablePane x:Name="RightBottom"
+                                                   FloatingWidth="200">
+                                    <xcad:LayoutAnchorable x:Name="objViewHolder"
+                                                       ContentId="objViewHolder"
+                                                       Title="Object View"
+                                                       CanHide="True"
+                                                       CanClose="True" >
+                                        <IS3Desktop:ObjectView x:Name="objectView"/>
+                                    </xcad:LayoutAnchorable>
+                                    <xcad:LayoutAnchorable x:Name="Tools"
+                                                       ContentId="Tools"
+                                                       Title="Tools"
+                                                       CanHide="True"
+                                                       CanClose="True" >
+                                        <IS3Desktop:ToolsPanel x:Name="ToolsPanel"/>
+                                    </xcad:LayoutAnchorable>
+                                    <xcad:LayoutAnchorable x:Name="Controls"
+                                                       ContentId="Controls"
+                                                       Title="Controls"
+                                                       CanHide="True"
+                                                       CanClose="True" >
+                                        <IS3Desktop:ControlsPanel x:Name="ControlsPanel"/>
+                                    </xcad:LayoutAnchorable>
+                                  
+                                </xcad:LayoutAnchorablePane>
+
+                            </xcad:LayoutAnchorablePaneGroup>
+                        </xcad:LayoutPanel>
+                    </xcad:LayoutPanel>
+                </xcad:LayoutRoot>
+            </xcad:DockingManager>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

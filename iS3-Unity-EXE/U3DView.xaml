@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="iS3.Unity.EXE.U3DView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iS3.Unity.EXE"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+            PreviewMouseMove="FormHost_OnMouseEnter" >
+    <!--<Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <WindowsFormsHost Grid.Row="1" x:Name="FormHost">
+
+            </WindowsFormsHost>
+        </Grid>
+
+    </Grid>-->
+
+
+    <Grid>
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <Style x:Key="LayersImage" TargetType="Image">
+                <Setter Property="Source"
+                        Value="image/Layers-32.png" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*" x:Name="r1"/>
+            <RowDefinition Height="1*" x:Name="r2"/>
+        </Grid.RowDefinitions>
+
+        <WindowsFormsHost  GotFocus="FormHost_OnGotFocus" LostFocus="FormHost_OnLostFocus" Grid.Row="1" Name="FormHost">
+
+
+        </WindowsFormsHost>
+    </Grid>
+</UserControl>

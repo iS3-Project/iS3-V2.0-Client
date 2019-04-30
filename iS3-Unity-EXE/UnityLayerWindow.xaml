@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="iS3.Unity.EXE.UnityLayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        >
+    <Grid>
+
+        <telerik:RadTreeListView Name="LayerList" Margin="0 -4 0 0"  
+                                 AutoGenerateColumns="False"
+                                 RowIndicatorVisibility="Collapsed"
+                                 ItemsSource="{Binding childNodes}" >
+            <telerik:RadContextMenu.ContextMenu>
+                <telerik:RadContextMenu Name="ContextMenu" Opened="ContextMenu_OnOpened">
+                    <telerik:RadMenuItem Header="显示选中对象" Click="ShowObject"></telerik:RadMenuItem>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+
+            <telerik:RadTreeListView.ChildTableDefinitions>
+                <telerik:TreeListViewTableDefinition  ItemsSource="{Binding childNodes}" />
+            </telerik:RadTreeListView.ChildTableDefinitions>
+
+            <telerik:RadTreeListView.Columns>
+                <telerik:GridViewColumn Header="Name">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding name}"></TextBlock>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+                <telerik:GridViewColumn  Header="显示">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox Name="VisibilityBox"  HorizontalAlignment="Center" IsChecked="{Binding Visibility}" Tag="{Binding path}" Click="VisibilityBox_OnClick"></CheckBox>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+                <telerik:GridViewColumn  Header="半透明">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox Name="TransparentBox"  HorizontalAlignment="Center" IsChecked="{Binding Transparent}" Tag="{Binding path}" Click="TransparentBox_OnClick"></CheckBox>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadTreeListView.Columns>
+        </telerik:RadTreeListView>
+
+    </Grid>
+</UserControl>

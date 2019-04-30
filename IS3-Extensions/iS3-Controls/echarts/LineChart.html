@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<!-- saved from url=(0013)about:internet -->
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="main" style="width:1360px;height:500px" />
+    <script src="echarts.js"></script>
+    <script src="echarts-all.js"></script>
+    <script src="macarons.js"></script>
+    <script>
+        myChart = echarts.init(document.getElementById('main'),'macarons');
+        function Type(info) {
+            alert(info);
+        }
+        //myChart.setOption(option);
+        function jsPushData(title, legend, xAxis, yAxisFormatter, series) {
+         option = {
+            title: {
+                text: title
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: legend
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            calculable: true,
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: xAxis
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: yAxisFormatter
+                    }
+                }
+            ],
+            series: series
+        };
+         myChart.setOption(option);
+        }
+    </script>
+</body>
+</html>

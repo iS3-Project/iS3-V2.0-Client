@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="iS3.Desktop.UserLoginPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:usercontrol="clr-namespace:iS3.Desktop.UserControls"
+             xmlns:local="clr-namespace:iS3.Desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/iS3.Desktop;component/Images/loginback.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*" MinHeight="300"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Orientation="Vertical">
+            <usercontrol:RaisedText x:Name="ProjectTitle1" Grid.Row="0"
+                                        Text="基础设施智慧服务系统" TextSize="60"
+                                        TextWeight="Bold" 
+                                        ShadowOpacity="0.5">
+            </usercontrol:RaisedText>
+            <usercontrol:RaisedText x:Name="ProjectTitle" Grid.Row="0"
+                                        Text="Infrastructure Smart Service System (iS3)" TextSize="30"
+                                        TextWeight="Bold" 
+                                        ShadowOpacity="0.5">
+            </usercontrol:RaisedText>
+        </StackPanel>
+        <Border Visibility="Visible" Name="LoginElement" Grid.Row="1" Background="#7C06091C" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="200" MinWidth="400" Margin="0 0 0 100" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="1.1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+                <Border Background="#4C000000" CornerRadius="10 10 0 0">
+                    <TextBlock Text="用户登录"  Foreground="#FFABB9C5"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="40 0 0 0">
+                    <TextBlock  Text="账　户" Padding="10 3 10 3"  Foreground="#FFABB9C5" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Foreground="#FFABB9C5" VerticalContentAlignment="Center" Background="Transparent"  Width="200"  Name="LoginNameTB" Text="Admin" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal" Margin="40 0 0 0">
+                    <TextBlock  Text="密　码" Padding="10 3 10 3"  Foreground="#FFABB9C5" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                    <PasswordBox Foreground="#FFABB9C5" VerticalContentAlignment="Center" Background="Transparent" Width="200" Name="LoginPasswordTB" Password="iS3Admin" />
+                </StackPanel>
+                <WrapPanel Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Name="LoginButton" 
+                                   HorizontalAlignment="Center" FontSize="15" Padding="4"  Width="100" BorderThickness="0"
+                                   Background="#196D83B0" Foreground="#FFABB9C5" Click="LoginButton_Click">用户登陆</Button>
+                    <Button Name="DBConfig" 
+                            HorizontalAlignment="Center" FontSize="15" Margin="10 0 0 0" Padding="4"  Width="100" BorderThickness="0"
+                            Background="#196D83B0" Foreground="#FFABB9C5" Click="DBConfig_Click">系统配置</Button>
+                </WrapPanel>
+            </Grid>
+        </Border>
+
+        <Border Visibility="Hidden" Name="DBConfigElement" Grid.RowSpan="2" Background="#7C06091C" CornerRadius="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" MinHeight="250" MinWidth="400" Margin="0 0 0 100" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="1.1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+                <Border Background="#4C000000" CornerRadius="10 10 0 0">
+                    <TextBlock Text="服务器连接配置"  Foreground="#FFABB9C5"  FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                </Border>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="40 0 0 0">
+                    <TextBlock  Text="服务地址" Padding="10 3 10 3"  Foreground="#FFABB9C5" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Name="DBAddress_TB" Foreground="#FFABB9C5" VerticalContentAlignment="Center" Background="Transparent"  Width="200" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal" Margin="40 0 0 0">
+                    <TextBlock  Text="服务端口" Padding="10 3 10 3"  Foreground="#FFABB9C5" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Name="DBPort_TB" Foreground="#FFABB9C5" VerticalContentAlignment="Center" Background="Transparent" Width="200" />
+                </StackPanel>
+                <WrapPanel Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Name="CommitButton" 
+                                   HorizontalAlignment="Center" FontSize="15" Padding="4"  Width="100" BorderThickness="0"
+                                   Background="#196D83B0" Foreground="#FFABB9C5" Click="Commit_Click">确定</Button>
+                    <Button Name="CancelButoon" 
+                            HorizontalAlignment="Center" FontSize="15" Margin="10 0 0 0" Padding="4"  Width="100" BorderThickness="0"
+                            Background="#196D83B0" Foreground="#FFABB9C5" Click="Cancel_Click">取消</Button>
+                </WrapPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

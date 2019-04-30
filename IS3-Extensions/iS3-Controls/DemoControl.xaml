@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="iS3.Controls.DemoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:iS3.Controls"
+             xmlns:is3="clr-namespace:iS3.Core;assembly=iS3.Core"
+             mc:Ignorable="d" >
+    <Grid>
+        <Label Content="this is a exteral control demo!"/>
+    </Grid>
+</UserControl>
