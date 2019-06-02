@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<setting>
+  <ipaddress>localhost</ipaddress>
+  <portID>8080</portID>
+  <DName>iS3Guest</DName>
+  <DPass>iS3Guest</DPass>
+  <Version>Normal</Version>
+</setting>
