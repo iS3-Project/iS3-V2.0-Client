@@ -73,9 +73,18 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>..\..\Output\libs\Interop.UnityWebPlayerAXLib.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="RibbonControlsLibrary, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Output\libs\Microsoft.Windows.Shell.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Output\libs\RibbonControlsLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -500,9 +509,9 @@
       <Name>iS3-Python</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\..\iS3-Unity-EXE\iS3.Unity.EXE.csproj">
+    <ProjectReference Include="..\..\iS3-Unity-EXE\iS3-Unity-EXE.csproj">
       <Project>{5b63c6c4-e731-435a-a7dc-5f97b97d9424}</Project>
-      <Name>iS3.Unity.EXE</Name>
+      <Name>iS3-Unity-EXE</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\IS3-Unity-Webplayer\iS3-Unity-Webplayer.csproj">
